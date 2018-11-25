@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Smart Mirror Configurator</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="scripts.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header><h1 class="title">Smart Mirror Configurator</h1></header>
+    <div class="card api">
+      <div class="card-title">API Keys</div>
+      <div class="inputs">
+        <span class="inputs-text">
+          News: <br />
+          Weather: <br />
+          Google: <br />
+          Import.io: <br />
+        </span>
+        <span class="inputs-field">
+          <input id="api-news" class="input" type="text" /><br />
+          <input id="api-weather" class="input" type="text" /><br />
+          <input id="api-google" class="input" type="text" /><br />
+          <input id="api-importio" class="input" type="text" /><br />
+        </span>
+      </div>
+    </div>
+
+    <div class="card users">
+      <div class="card-title">Users</div>
+      <div class="inputs" id="user-inputs"></div>
+    </div>
+  </body>
+</html>
