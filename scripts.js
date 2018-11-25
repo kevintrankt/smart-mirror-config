@@ -1,22 +1,22 @@
 // Supported widgets
 const widgets = ['Clock', 'Weather', 'News', 'Calendar', 'Subreddit'];
-const userFields = [];
 
 $(document).ready(function() {
-  // Populate Users
-  createUser();
   createUser();
 });
+
+const userFields = [];
 
 const createUser = () => {
   // Populate user input fields
   let userInputs = $('#user-inputs');
 
   let userId = userFields.length;
-  let user = $('<div></div>').addClass('user');
+  let user = $('<div></div>')
+    .addClass('user')
+    .prop('id', `user-${userId}`);
   userInputs.append(user);
-  let inputsText = $('<span></span>').addClass('inputs-text')
-    .append(`Name: <br />
+  let inputsText = $('<span></span>').addClass('inputs-text').append(`Name: <br />
         Zip Code: <br />
         Subreddit: <br />
         Google Calendar: <br />
@@ -131,6 +131,11 @@ const createUser = () => {
   inputsField.append(bl).append('<br />');
 
   userFields.push(user);
+};
+
+const deleteUser = () => {
+  userFields[userFields.length - 1].remove();
+  userFields.splice(userFields.length - 1);
 };
 
 const download = (content, fileName, contentType) => {
