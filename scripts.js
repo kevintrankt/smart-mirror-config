@@ -206,11 +206,33 @@ const readSingleFile = e => {
 
 const loadConfig = contents => {
   let config = JSON.parse(contents);
+  const { apiKeys, users } = config;
   console.log(config);
 
   // Load API Keys
-  $('#api-news').val(config.apiKeys.news);
-  $('#api-weather').val(config.apiKeys.weather);
-  $('#api-google').val(config.apiKeys.cal);
-  $('#api-importio').val(config.apiKeys.importio);
+  $('#api-news').val(apiKeys.news);
+  $('#api-weather').val(apiKeys.weather);
+  $('#api-google').val(apiKeys.cal);
+  $('#api-importio').val(apiKeys.importio);
+
+  let userId = 0;
+
+  for (let user of users) {
+    console.log(user);
+    if (!userFields[userId]) {
+      createUser();
+    }
+
+    $(`#name-${userId}`).val(user.name);
+    $(`#zip-${userId}`).val(user.location);
+    $(`#sub-${userId}`).val(user.subreddit);
+    $(`#cal-${userId}`).val(user.calendar);
+
+    $(`#tl-${userId} option:eq(${user.widgets[0] + 1})`).prop('selected', true);
+    $(`#tr-${userId} option:eq(${user.widgets[1] + 1})`).prop('selected', true);
+    $(`#br-${userId} option:eq(${user.widgets[2] + 1})`).prop('selected', true);
+    $(`#bl-${userId} option:eq(${user.widgets[3] + 1})`).prop('selected', true);
+
+    userId++;
+  }
 };
