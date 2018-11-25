@@ -2,6 +2,8 @@
 const widgets = ['Clock', 'Weather', 'News', 'Calendar', 'Subreddit'];
 
 $(document).ready(function() {
+  document.getElementById('file-input').addEventListener('change', readSingleFile, false);
+
   createUser();
 });
 
@@ -170,7 +172,6 @@ const createConfig = () => {
   for (let i = 0; i < userFields.length; i++) {
     let user = {};
 
-    console.log(i);
     user['name'] = $(`#name-${i}`).val();
     user['location'] = $(`#zip-${i}`).val();
     user['subreddit'] = $(`#sub-${i}`).val();
@@ -183,13 +184,33 @@ const createConfig = () => {
       $(`#bl-${i}`).val()
     ];
 
-    console.log(user);
     users.push(user);
-    console.log(users);
   }
 
   let config = { apiKeys, users };
-  console.log(JSON.stringify(config));
 
   download(JSON.stringify(config), 'config.json', 'text/plain');
+};
+
+const readSingleFile = e => {
+  const file = e.target.files[0];
+  if (!file) {
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    loadConfig(e.target.result);
+  };
+  reader.readAsText(file);
+};
+
+const loadConfig = contents => {
+  let config = JSON.parse(contents);
+  console.log(config);
+
+  // Load API Keys
+  $('#api-news').val(config.apiKeys.news);
+  $('#api-weather').val(config.apiKeys.weather);
+  $('#api-google').val(config.apiKeys.cal);
+  $('#api-importio').val(config.apiKeys.importio);
 };
