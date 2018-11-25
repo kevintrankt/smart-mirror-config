@@ -47,17 +47,19 @@ header {
 }
 
 .card-title {
-  margin: 5px;
+  padding: 8px 0 0 8px;
   font-size: 1.1em;
+  font-size: 1.4em;
 }
 
 .inputs {
-  padding: 5px;
+  padding: 0 16px 16px 16px;
 }
 
 .inputs-text {
   display: inline-block;
   font-size: 1.05em;
+  color: #757575;
 }
 .inputs-field {
   display: inline-block;
@@ -76,5 +78,9 @@ header {
 }
 
 .user {
-  padding-bottom: 15px;
+  padding-top: 16px;
+}
+
+#file-input {
+  padding: 16px 0 0 16px;
 }

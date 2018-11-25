@@ -30,6 +30,7 @@ const createUser = () => {
   let inputsField = $('<span></span>').addClass('inputs-field');
   user.append(inputsField);
 
+  // Name
   inputsField
     .append(
       $('<input />')
@@ -39,6 +40,7 @@ const createUser = () => {
     )
     .append('<br />');
 
+  // Zip Code
   inputsField
     .append(
       $('<input />')
@@ -48,6 +50,7 @@ const createUser = () => {
     )
     .append('<br />');
 
+  // Subreddit
   inputsField
     .append(
       $('<input />')
@@ -57,6 +60,7 @@ const createUser = () => {
     )
     .append('<br />');
 
+  // Calendar Email
   inputsField
     .append(
       $('<input />')
@@ -66,6 +70,7 @@ const createUser = () => {
     )
     .append('<br />');
 
+  // Top Left
   let tl = $('<select></select>')
     .addClass('widgets')
     .prop('id', `tl-${userId}`)
@@ -75,6 +80,7 @@ const createUser = () => {
         .append('Empty')
     );
 
+  // Top Right
   let tr = $('<select></select>')
     .addClass('widgets')
     .prop('id', `tr-${userId}`)
@@ -84,6 +90,7 @@ const createUser = () => {
         .append('Empty')
     );
 
+  // Bottom Right
   let br = $('<select></select>')
     .addClass('widgets')
     .prop('id', `br-${userId}`)
@@ -93,6 +100,7 @@ const createUser = () => {
         .append('Empty')
     );
 
+  // Bottom Left
   let bl = $('<select></select>')
     .addClass('widgets')
     .prop('id', `bl-${userId}`)
@@ -102,6 +110,7 @@ const createUser = () => {
         .append('Empty')
     );
 
+  // Populate objects
   for (let widget of widgets) {
     tl.append(
       $('<option></option>')
