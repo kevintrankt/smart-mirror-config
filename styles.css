@@ -100,3 +100,8 @@ a {
 #file-input {
   padding: 16px 0 0 16px;
 }
+
+.delete {
+  float: right;
+  font-weight: bold;
+}

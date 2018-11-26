@@ -7,16 +7,23 @@ $(document).ready(function() {
   createUser();
 });
 
-const userFields = [];
+let userFields = [];
 
 const createUser = () => {
   // Populate user input fields
   let userInputs = $('#user-inputs');
-
   let userId = userFields.length;
+
   let user = $('<div></div>')
     .addClass('user')
     .prop('id', `user-${userId}`);
+  user.append(
+    $('<div>x</div>')
+      .addClass('delete')
+      .click(function() {
+        deleteByUser(userId);
+      })
+  );
   userInputs.append(user);
   let inputsText = $('<span></span>').addClass('inputs-text').append(`Name: <br />
         Zip Code: <br />
@@ -243,6 +250,11 @@ const deleteUser = () => {
   userFields.splice(userFields.length - 1);
 };
 
+const deleteByUser = index => {
+  userFields[index].remove();
+  // userFields.splice(index, 1);
+};
+
 const download = (content, fileName, contentType) => {
   const a = document.createElement('a');
   const file = new Blob([content], { type: contentType });
@@ -290,7 +302,21 @@ const createConfig = () => {
 
   let config = { apiKeys, users };
 
-  download(JSON.stringify(config), 'config.json', 'text/plain');
+  return JSON.stringify(config);
+};
+
+const saveConfig = () => {
+  download(createConfig(), 'config.json', 'text/plain');
+};
+
+const copyConfig = () => {
+  var el = document.createElement('textarea');
+  el.value = createConfig();
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand('copy');
+  document.body.removeChild(el);
+  alert('Config copied to clipboard!');
 };
 
 const readSingleFile = e => {
@@ -318,11 +344,16 @@ const loadConfig = contents => {
 
   let userId = 0;
 
+  for (let userField of userFields) {
+    userField.remove();
+  }
+
+  userFields = [];
+
   for (let user of users) {
     console.log(user);
-    if (!userFields[userId]) {
-      createUser();
-    }
+
+    createUser();
 
     $(`#name-${userId}`).val(user.name);
     $(`#zip-${userId}`).val(user.location);
