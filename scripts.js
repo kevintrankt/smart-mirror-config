@@ -27,7 +27,11 @@ const createUser = () => {
         Top Left Widget: <br />
         Top Right Widget: <br />
         Bottom Right Widget: <br />
-        Bottom Left Widget: <br />`);
+        Bottom Left Widget: <br />
+        Top Widget: <br />
+        Right Widget: <br />
+        Bottom Widget: <br />
+        Left Widget: <br />`);
   user.append(inputsText);
   let inputsField = $('<span></span>').addClass('inputs-field');
   user.append(inputsField);
@@ -98,7 +102,7 @@ const createUser = () => {
     .prop('id', `tl-${userId}`)
     .append(
       $('<option></option>')
-        .prop('value', '')
+        .prop('value', 'X')
         .append('Empty')
     );
 
@@ -108,7 +112,7 @@ const createUser = () => {
     .prop('id', `tr-${userId}`)
     .append(
       $('<option></option>')
-        .prop('value', '')
+        .prop('value', 'X')
         .append('Empty')
     );
 
@@ -118,7 +122,7 @@ const createUser = () => {
     .prop('id', `br-${userId}`)
     .append(
       $('<option></option>')
-        .prop('value', '')
+        .prop('value', 'X')
         .append('Empty')
     );
 
@@ -128,7 +132,47 @@ const createUser = () => {
     .prop('id', `bl-${userId}`)
     .append(
       $('<option></option>')
-        .prop('value', '')
+        .prop('value', 'X')
+        .append('Empty')
+    );
+
+  // Top
+  let t = $('<select></select>')
+    .addClass('widgets')
+    .prop('id', `t-${userId}`)
+    .append(
+      $('<option></option>')
+        .prop('value', 'X')
+        .append('Empty')
+    );
+
+  // Right
+  let r = $('<select></select>')
+    .addClass('widgets')
+    .prop('id', `r-${userId}`)
+    .append(
+      $('<option></option>')
+        .prop('value', 'X')
+        .append('Empty')
+    );
+
+  // Bottom
+  let b = $('<select></select>')
+    .addClass('widgets')
+    .prop('id', `b-${userId}`)
+    .append(
+      $('<option></option>')
+        .prop('value', 'X')
+        .append('Empty')
+    );
+
+  // Left
+  let l = $('<select></select>')
+    .addClass('widgets')
+    .prop('id', `l-${userId}`)
+    .append(
+      $('<option></option>')
+        .prop('value', 'X')
         .append('Empty')
     );
 
@@ -157,11 +201,39 @@ const createUser = () => {
         .prop('value', widgets.indexOf(widget))
         .append(widget)
     );
+
+    t.append(
+      $('<option></option>')
+        .prop('value', widgets.indexOf(widget))
+        .append(widget)
+    );
+
+    r.append(
+      $('<option></option>')
+        .prop('value', widgets.indexOf(widget))
+        .append(widget)
+    );
+
+    b.append(
+      $('<option></option>')
+        .prop('value', widgets.indexOf(widget))
+        .append(widget)
+    );
+
+    l.append(
+      $('<option></option>')
+        .prop('value', widgets.indexOf(widget))
+        .append(widget)
+    );
   }
   inputsField.append(tl).append('<br />');
   inputsField.append(tr).append('<br />');
   inputsField.append(br).append('<br />');
   inputsField.append(bl).append('<br />');
+  inputsField.append(t).append('<br />');
+  inputsField.append(r).append('<br />');
+  inputsField.append(b).append('<br />');
+  inputsField.append(l).append('<br />');
 
   userFields.push(user);
 };
@@ -211,6 +283,7 @@ const createConfig = () => {
     user['destination_name'] = $(`#destname-${i}`).val();
 
     user['widgets'] = [$(`#tl-${i}`).val(), $(`#tr-${i}`).val(), $(`#br-${i}`).val(), $(`#bl-${i}`).val()];
+    user['widgets2'] = [$(`#t-${i}`).val(), $(`#r-${i}`).val(), $(`#b-${i}`).val(), $(`#l-${i}`).val()];
 
     users.push(user);
   }
@@ -263,6 +336,11 @@ const loadConfig = contents => {
     $(`#tr-${userId} option:eq(${user.widgets[1] + 1})`).prop('selected', true);
     $(`#br-${userId} option:eq(${user.widgets[2] + 1})`).prop('selected', true);
     $(`#bl-${userId} option:eq(${user.widgets[3] + 1})`).prop('selected', true);
+
+    $(`#t-${userId} option:eq(${user.widgets2[0] + 1})`).prop('selected', true);
+    $(`#r-${userId} option:eq(${user.widgets2[1] + 1})`).prop('selected', true);
+    $(`#b-${userId} option:eq(${user.widgets2[2] + 1})`).prop('selected', true);
+    $(`#l-${userId} option:eq(${user.widgets2[3] + 1})`).prop('selected', true);
 
     userId++;
   }
