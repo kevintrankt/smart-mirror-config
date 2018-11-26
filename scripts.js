@@ -1,5 +1,5 @@
 // Supported widgets
-const widgets = ['Clock', 'Weather', 'News', 'Calendar', 'Subreddit'];
+const widgets = ['Clock', 'Weather', 'News', 'Calendar', 'Subreddit', 'Destination'];
 
 $(document).ready(function() {
   document.getElementById('file-input').addEventListener('change', readSingleFile, false);
@@ -22,6 +22,8 @@ const createUser = () => {
         Zip Code: <br />
         Subreddit: <br />
         Google Calendar: <br />
+        Destination URL: <br />
+        Destination Name: <br />
         Top Left Widget: <br />
         Top Right Widget: <br />
         Bottom Right Widget: <br />
@@ -66,6 +68,26 @@ const createUser = () => {
       $('<input />')
         .addClass('input')
         .prop('id', `cal-${userId}`)
+        .prop('type', 'text')
+    )
+    .append('<br />');
+
+  // Destination Url
+  inputsField
+    .append(
+      $('<input />')
+        .addClass('input')
+        .prop('id', `dest-${userId}`)
+        .prop('type', 'text')
+    )
+    .append('<br />');
+
+  // Destination Name
+  inputsField
+    .append(
+      $('<input />')
+        .addClass('input')
+        .prop('id', `destname-${userId}`)
         .prop('type', 'text')
     )
     .append('<br />');
@@ -185,13 +207,10 @@ const createConfig = () => {
     user['location'] = $(`#zip-${i}`).val();
     user['subreddit'] = $(`#sub-${i}`).val();
     user['calendar'] = $(`#cal-${i}`).val();
+    user['destination'] = $(`#dest-${i}`).val();
+    user['destination_name'] = $(`#destname-${i}`).val();
 
-    user['widgets'] = [
-      $(`#tl-${i}`).val(),
-      $(`#tr-${i}`).val(),
-      $(`#br-${i}`).val(),
-      $(`#bl-${i}`).val()
-    ];
+    user['widgets'] = [$(`#tl-${i}`).val(), $(`#tr-${i}`).val(), $(`#br-${i}`).val(), $(`#bl-${i}`).val()];
 
     users.push(user);
   }
@@ -236,6 +255,9 @@ const loadConfig = contents => {
     $(`#zip-${userId}`).val(user.location);
     $(`#sub-${userId}`).val(user.subreddit);
     $(`#cal-${userId}`).val(user.calendar);
+
+    $(`#dest-${userId}`).val(user.destination);
+    $(`#destname-${userId}`).val(user.destination_name);
 
     $(`#tl-${userId} option:eq(${user.widgets[0] + 1})`).prop('selected', true);
     $(`#tr-${userId} option:eq(${user.widgets[1] + 1})`).prop('selected', true);

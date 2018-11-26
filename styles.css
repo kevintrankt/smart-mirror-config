@@ -37,6 +37,7 @@ header {
 
 .fas {
   padding-left: 4px;
+  cursor: pointer;
 }
 
 .card {
@@ -56,10 +57,19 @@ header {
   padding: 0 16px 16px 16px;
 }
 
+input:focus {
+  outline: none;
+}
+
 .inputs-text {
   display: inline-block;
   font-size: 1.05em;
   color: #757575;
+}
+
+a {
+  color: #757575;
+  text-decoration: none;
 }
 .inputs-field {
   display: inline-block;
@@ -67,7 +77,13 @@ header {
 }
 
 .input {
-  /* width: 70vw; */
+  background: transparent;
+  border-top: transparent !important;
+  border-left: transparent !important;
+  border-right: transparent !important;
+  /* border-bottom: 1px solid !important; */
+  /* font-size: 0.5em; */
+  color: #757575;
 }
 
 .input-label {
