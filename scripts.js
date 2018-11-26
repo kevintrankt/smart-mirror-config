@@ -102,7 +102,7 @@ const createUser = () => {
     .prop('id', `tl-${userId}`)
     .append(
       $('<option></option>')
-        .prop('value', 'X')
+        .prop('value', -1)
         .append('Empty')
     );
 
@@ -112,7 +112,7 @@ const createUser = () => {
     .prop('id', `tr-${userId}`)
     .append(
       $('<option></option>')
-        .prop('value', 'X')
+        .prop('value', -1)
         .append('Empty')
     );
 
@@ -122,7 +122,7 @@ const createUser = () => {
     .prop('id', `br-${userId}`)
     .append(
       $('<option></option>')
-        .prop('value', 'X')
+        .prop('value', -1)
         .append('Empty')
     );
 
@@ -132,7 +132,7 @@ const createUser = () => {
     .prop('id', `bl-${userId}`)
     .append(
       $('<option></option>')
-        .prop('value', 'X')
+        .prop('value', -1)
         .append('Empty')
     );
 
@@ -142,7 +142,7 @@ const createUser = () => {
     .prop('id', `t-${userId}`)
     .append(
       $('<option></option>')
-        .prop('value', 'X')
+        .prop('value', -1)
         .append('Empty')
     );
 
@@ -152,7 +152,7 @@ const createUser = () => {
     .prop('id', `r-${userId}`)
     .append(
       $('<option></option>')
-        .prop('value', 'X')
+        .prop('value', -1)
         .append('Empty')
     );
 
@@ -162,7 +162,7 @@ const createUser = () => {
     .prop('id', `b-${userId}`)
     .append(
       $('<option></option>')
-        .prop('value', 'X')
+        .prop('value', -1)
         .append('Empty')
     );
 
@@ -172,7 +172,7 @@ const createUser = () => {
     .prop('id', `l-${userId}`)
     .append(
       $('<option></option>')
-        .prop('value', 'X')
+        .prop('value', -1)
         .append('Empty')
     );
 
@@ -332,15 +332,15 @@ const loadConfig = contents => {
     $(`#dest-${userId}`).val(user.destination);
     $(`#destname-${userId}`).val(user.destination_name);
 
-    $(`#tl-${userId} option:eq(${user.widgets[0] + 1})`).prop('selected', true);
-    $(`#tr-${userId} option:eq(${user.widgets[1] + 1})`).prop('selected', true);
-    $(`#br-${userId} option:eq(${user.widgets[2] + 1})`).prop('selected', true);
-    $(`#bl-${userId} option:eq(${user.widgets[3] + 1})`).prop('selected', true);
+    $(`#tl-${userId} option:eq(${parseInt(user.widgets[0]) + 1})`).prop('selected', true);
+    $(`#tr-${userId} option:eq(${parseInt(user.widgets[1]) + 1})`).prop('selected', true);
+    $(`#br-${userId} option:eq(${parseInt(user.widgets[2]) + 1})`).prop('selected', true);
+    $(`#bl-${userId} option:eq(${parseInt(user.widgets[3]) + 1})`).prop('selected', true);
 
-    $(`#t-${userId} option:eq(${user.widgets2[0] + 1})`).prop('selected', true);
-    $(`#r-${userId} option:eq(${user.widgets2[1] + 1})`).prop('selected', true);
-    $(`#b-${userId} option:eq(${user.widgets2[2] + 1})`).prop('selected', true);
-    $(`#l-${userId} option:eq(${user.widgets2[3] + 1})`).prop('selected', true);
+    $(`#t-${userId} option:eq(${parseInt(user.widgets2[0]) + 1})`).prop('selected', true);
+    $(`#r-${userId} option:eq(${parseInt(user.widgets2[1]) + 1})`).prop('selected', true);
+    $(`#b-${userId} option:eq(${parseInt(user.widgets2[2]) + 1})`).prop('selected', true);
+    $(`#l-${userId} option:eq(${parseInt(user.widgets2[3]) + 1})`).prop('selected', true);
 
     userId++;
   }
