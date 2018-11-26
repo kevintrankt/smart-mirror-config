@@ -1,5 +1,5 @@
 // Supported widgets
-const widgets = ['Clock', 'Weather', 'News', 'Calendar', 'Subreddit', 'Destination'];
+const widgets = ['Clock', 'Weather', 'News', 'Agenda', 'Subreddit', 'Destination'];
 
 $(document).ready(function() {
   document.getElementById('file-input').addEventListener('change', readSingleFile, false);
