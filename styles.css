@@ -8,6 +8,8 @@ header {
   height: 64px;
   background: #ff8585;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 1;
 }
 
 .title {
@@ -73,7 +75,6 @@ a {
 }
 .inputs-field {
   display: inline-block;
-  /* float: right; */
 }
 
 .input {
@@ -81,8 +82,7 @@ a {
   border-top: transparent !important;
   border-left: transparent !important;
   border-right: transparent !important;
-  /* border-bottom: 1px solid !important; */
-  /* font-size: 0.5em; */
+
   color: #757575;
 }
 
@@ -98,7 +98,7 @@ a {
 }
 
 #file-input {
-  padding: 16px 0 0 16px;
+  padding: 80px 0 0 16px;
 }
 
 .delete {

@@ -26,15 +26,16 @@ const createUser = () => {
   );
   userInputs.append(user);
   let inputsText = $('<span></span>').addClass('inputs-text').append(`Name: <br />
+        Login Message: <br />
         Zip Code: <br />
         Subreddit: <br />
         Google Calendar: <br />
         Destination URL: <br />
-        Destination Name: <br />
+        Destination Name: <br /> <br />
         Top Left Widget: <br />
         Top Right Widget: <br />
         Bottom Right Widget: <br />
-        Bottom Left Widget: <br />
+        Bottom Left Widget: <br /> <br />
         Top Widget: <br />
         Right Widget: <br />
         Bottom Widget: <br />
@@ -49,6 +50,16 @@ const createUser = () => {
       $('<input />')
         .addClass('input')
         .prop('id', `name-${userId}`)
+        .prop('type', 'text')
+    )
+    .append('<br />');
+
+  // Login Message
+  inputsField
+    .append(
+      $('<input />')
+        .addClass('input')
+        .prop('id', `msg-${userId}`)
         .prop('type', 'text')
     )
     .append('<br />');
@@ -101,7 +112,7 @@ const createUser = () => {
         .prop('id', `destname-${userId}`)
         .prop('type', 'text')
     )
-    .append('<br />');
+    .append('<br /> <br />');
 
   // Top Left
   let tl = $('<select></select>')
@@ -236,7 +247,7 @@ const createUser = () => {
   inputsField.append(tl).append('<br />');
   inputsField.append(tr).append('<br />');
   inputsField.append(br).append('<br />');
-  inputsField.append(bl).append('<br />');
+  inputsField.append(bl).append('<br /> <br />');
   inputsField.append(t).append('<br />');
   inputsField.append(r).append('<br />');
   inputsField.append(b).append('<br />');
@@ -253,7 +264,6 @@ const deleteUser = () => {
 const deleteByUser = index => {
   userFields[index].remove();
   userFields[index] = null;
-  // userFields.splice(index, 1);
 };
 
 const download = (content, fileName, contentType) => {
@@ -290,6 +300,7 @@ const createConfig = () => {
       let user = {};
 
       user['name'] = $(`#name-${i}`).val();
+      user['msg'] = $(`#msg-${i}`).val();
       user['location'] = $(`#zip-${i}`).val();
       user['subreddit'] = $(`#sub-${i}`).val();
       user['calendar'] = $(`#cal-${i}`).val();
@@ -354,11 +365,10 @@ const loadConfig = contents => {
   userFields = [];
 
   for (let user of users) {
-    console.log(user);
-
     createUser();
 
     $(`#name-${userId}`).val(user.name);
+    $(`#msg-${userId}`).val(user.msg);
     $(`#zip-${userId}`).val(user.location);
     $(`#sub-${userId}`).val(user.subreddit);
     $(`#cal-${userId}`).val(user.calendar);
