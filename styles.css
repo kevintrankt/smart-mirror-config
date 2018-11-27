@@ -104,4 +104,6 @@ a {
 .delete {
   float: right;
   font-weight: bold;
+  color: salmon;
+  cursor: pointer;
 }

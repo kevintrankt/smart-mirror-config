@@ -252,6 +252,7 @@ const deleteUser = () => {
 
 const deleteByUser = index => {
   userFields[index].remove();
+  userFields[index] = null;
   // userFields.splice(index, 1);
 };
 
@@ -285,19 +286,21 @@ const createConfig = () => {
   let users = [];
 
   for (let i = 0; i < userFields.length; i++) {
-    let user = {};
+    if (userFields[i]) {
+      let user = {};
 
-    user['name'] = $(`#name-${i}`).val();
-    user['location'] = $(`#zip-${i}`).val();
-    user['subreddit'] = $(`#sub-${i}`).val();
-    user['calendar'] = $(`#cal-${i}`).val();
-    user['destination'] = $(`#dest-${i}`).val();
-    user['destination_name'] = $(`#destname-${i}`).val();
+      user['name'] = $(`#name-${i}`).val();
+      user['location'] = $(`#zip-${i}`).val();
+      user['subreddit'] = $(`#sub-${i}`).val();
+      user['calendar'] = $(`#cal-${i}`).val();
+      user['destination'] = $(`#dest-${i}`).val();
+      user['destination_name'] = $(`#destname-${i}`).val();
 
-    user['widgets'] = [$(`#tl-${i}`).val(), $(`#tr-${i}`).val(), $(`#br-${i}`).val(), $(`#bl-${i}`).val()];
-    user['widgets2'] = [$(`#t-${i}`).val(), $(`#r-${i}`).val(), $(`#b-${i}`).val(), $(`#l-${i}`).val()];
+      user['widgets'] = [$(`#tl-${i}`).val(), $(`#tr-${i}`).val(), $(`#br-${i}`).val(), $(`#bl-${i}`).val()];
+      user['widgets2'] = [$(`#t-${i}`).val(), $(`#r-${i}`).val(), $(`#b-${i}`).val(), $(`#l-${i}`).val()];
 
-    users.push(user);
+      users.push(user);
+    }
   }
 
   let config = { apiKeys, users };
